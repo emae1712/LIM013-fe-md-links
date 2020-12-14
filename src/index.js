@@ -3,6 +3,7 @@ const path = require('path');
 const marked = require('marked');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
+const fetch = require('node-fetch');
 // pruebas
 const pathTxt = './src/pruebas/text.txt';
 const pruebaFileMd = './src/pruebas/1.md';
@@ -13,8 +14,8 @@ console.log("Current directory:", __dirname);
 /**************************** METHODS TO GET ABSOLUTE PATH *****************************/
 //path exists, return a boolean
 // const fileExist = (inputPath) => fs.existsSync(inputPath);
-// const isAbsolute = (inputPath) => path.isAbsolute(inputPath);
-// const convertToAbsolute = (inputPath) => path.resolve(inputPath);
+// path.isAbsolute(inputPath); return a boolean
+// path.resolve(inputPath); convert a path in absolute
 // Evaluate the path and get an absolute path
 const getAbsolutePath = (inputPath) => path.isAbsolute(inputPath) ? inputPath : path.resolve(inputPath);
 console.log(`${pathTxt} getting an absolute path`,getAbsolutePath(pathTxt));
@@ -24,8 +25,7 @@ const getMdFiles = (inputPath)=>{
   //lstatSync is used to synchronously return, to refer to a file or directory
   const isFile = (inputPath) => fs.lstatSync(inputPath).isFile();
   const isDirectory = (inputPath) => fs.lstatSync(inputPath).isDirectory();
-  // return a string with the extension portion of the path, TypeError if this parameter is not a string value
-  const mdExtension = (inputPath) => path.extname(inputPath) == '.md';
+  const mdExtension = (inputPath) => path.extname(inputPath) == '.md'; // return a string with the extension portion of the path, equal returns boolean
 
   let mdFilesArray = [];
   const absolutePath = getAbsolutePath(inputPath);
@@ -65,21 +65,56 @@ const getLinks = (inputPath) =>{
     const anchorsMatch = [...dom.window.document.querySelectorAll('a')];
     //returns a nodelist, a list of the elements, it can be examined like any array, forEach
     // [...] spread syntax creates an array, to use methods like map, filter etc
+    // Href returns the entire URL, including the protocol (like http://)
     const condition = anchorsMatch.filter((anchor) => anchor.href.startsWith('http'));
-    condition.map((anchor)=>{
-    return  mdLinksArray.push({
-        href: anchor.href,
-        text: anchor.textContent.slice(0,50),
-        file: file,
+      condition.map((anchor)=>{
+        return  mdLinksArray.push({
+          href: anchor.href,
+          text: anchor.text.slice(0,50),
+          file: file,
+        });
       });
     });
-  });
   return mdLinksArray;
 };
 };
-console.log(getLinks(dirWithoutMd));
+//console.log(getLinks(pruebaDir));
 
+/********************************VALIDATE OPTION********************************* */
+// make a petition  HTTP if the link works or not (fetch)
+// output path, URL, ok or fail, status, text from URL
+
+const validate = (inputPath) => {
+  const mdLinksArrayOfObject = getLinks(inputPath);
+  const validateLinks = mdLinksArrayOfObject.map((link) => fetch(link.href)
+    .then((response) => {
+      // response.ok return a boolean, it will be true to response.status >= 200 && response.status < 300
+      if(response.ok){
+        console.log({...link,
+        status_code: response.status,
+        status: response.statusText
+        });
+      } else{
+      console.log({...link,
+        status_code: response.status,
+        status: 'FAIL'
+        })
+      }
+    })
+    .catch((error)=>{
+      console.log({...link,
+      error: error,
+      })
+    })
+  );
+  //promise.all(iterable), iterable like an array, returns a promise when all promises to be success or will be rejected
+  return Promise.all(validateLinks);
+}
+console.log(validate(pruebaDir));
 
 module.exports = {
   getAbsolutePath,
+  getMdFiles,
+  getLinks,
+  validate,
 };
