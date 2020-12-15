@@ -66,7 +66,7 @@ const getLinks = (inputPath) =>{
     // [...] spread syntax creates an array, to use methods like map, filter etc
     // Href returns the entire URL, including the protocol (like http://)
     const condition = anchorsMatch.filter((anchor) => anchor.href.startsWith('http'));
-      condition.map((anchor)=>{
+      condition.forEach((anchor)=>{
         return  mdLinksArray.push({
           href: anchor.href,
           text: anchor.text.slice(0,50),
@@ -88,19 +88,19 @@ const validate = (inputPath) => {
     .then((response) => {
       // response.ok return a boolean, it will be true to response.status >= 200 && response.status < 300
       if(response.ok){
-       console.log({...link,
+      return ({...link,
         status: response.status,
         message: response.statusText
         });
       } else{
-      console.log({...link,
+      return ({...link,
         status: response.status,
         message: 'FAIL'
         })
       }
     })
     .catch((error)=>{
-      console.log({...link,
+      return ({...link,
       error: error.message,
       message:'FAIL'
       })
@@ -109,7 +109,7 @@ const validate = (inputPath) => {
   //promise.all(iterable), iterable like an array, returns a promise when all promises to be success or will be rejected
   return Promise.all(validateLinks);
 }
-console.log(validate(pruebaDir));
+//console.log(validate(pruebaDir));
 
 module.exports = {
   fileExist,

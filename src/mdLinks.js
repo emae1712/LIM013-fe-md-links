@@ -13,5 +13,8 @@ const mdLinks = (path, option = { validate: false }) => {
         }
     })
 };
-console.log(mdLinks('./src/pruebas'))
+// mdLinks('./src/pruebas', { validate: true})
+// .then((response)=>{
+//     console.log(response);
+// })
 module.exports = { mdLinks };

@@ -11,11 +11,17 @@ const stats = (mdLinksArrayOfObject)=>{
 
 const statsValidate = (mdLinksArrayOfObject)=>{
     let broken = 0;
-    mdLinksArrayOfObject.map((link) => {
+    mdLinksArrayOfObject.forEach((link) => {
         if (link.message == 'FAIL') broken += 1;
       });
       return {Broken: broken}
 }
+
+module.exports = {
+    stats,
+    statsValidate,
+  };
+  
 console.log(statsValidate([
     {
         href: 'http://www.google.com/',
