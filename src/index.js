@@ -13,12 +13,12 @@ console.log("Current directory:", __dirname);
 
 /**************************** METHODS TO GET ABSOLUTE PATH *****************************/
 //path exists, return a boolean
-// const fileExist = (inputPath) => fs.existsSync(inputPath);
+const fileExist = (inputPath) => (fs.existsSync(inputPath) && typeof inputPath == 'string') ? true : false;
+
 // path.isAbsolute(inputPath); return a boolean
 // path.resolve(inputPath); convert a path in absolute
 // Evaluate the path and get an absolute path
 const getAbsolutePath = (inputPath) => path.isAbsolute(inputPath) ? inputPath : path.resolve(inputPath);
-console.log(`${pathTxt} getting an absolute path`,getAbsolutePath(pathTxt));
 
 /*********************** METHODS TO GET FILES WITH MD EXTENSIONS **************************/
 const getMdFiles = (inputPath)=>{
@@ -42,7 +42,7 @@ const getMdFiles = (inputPath)=>{
   }
   return mdFilesArray;
 }
-console.log("prueba", getMdFiles(pruebaDir));
+//console.log("prueba", getMdFiles(pruebaDir));
 //console.log("prueba file", getMdFiles(pruebaFileMd));
 
 /*************************** METHODS TO GET LINKS FROM MD FILES *******************************/
@@ -54,9 +54,6 @@ console.log("prueba", getMdFiles(pruebaDir));
 const getLinks = (inputPath) =>{
   const mdFilesArray = getMdFiles(inputPath);
   let mdLinksArray = [];
-  if(mdFilesArray.length === 0){
-    console.log('Does not exist markdown files in this path');
-  } else{ 
     mdFilesArray.forEach((file) =>{
     const readFile = fs.readFileSync(file, {encoding:'utf-8'}); // utf-8 ASCII code or will return buffer
     //marked module transforms document to HTML, placing HTML tags
@@ -77,12 +74,11 @@ const getLinks = (inputPath) =>{
     });
   return mdLinksArray;
 };
-};
 //console.log(getLinks(pruebaDir));
 
 /********************************VALIDATE OPTION********************************* */
 // make a petition  HTTP if the link works or not (fetch)
-// output path, URL, ok or fail, status, text from URL
+// output path, URL, ok or fail, status, text from URL [{ href, text, file, status, message }]
 
 const validate = (inputPath) => {
   const mdLinksArrayOfObject = getLinks(inputPath);
@@ -90,29 +86,30 @@ const validate = (inputPath) => {
     .then((response) => {
       // response.ok return a boolean, it will be true to response.status >= 200 && response.status < 300
       if(response.ok){
-        console.log({...link,
-        status_code: response.status,
-        status: response.statusText
+        ({...link,
+        status: response.status,
+        message: response.statusText
         });
       } else{
-      console.log({...link,
-        status_code: response.status,
-        status: 'FAIL'
+        ({...link,
+        status: response.status,
+        message: 'FAIL'
         })
       }
     })
     .catch((error)=>{
-      console.log({...link,
-      error: error,
+      ({...link,
+      error: error.message,
       })
     })
   );
   //promise.all(iterable), iterable like an array, returns a promise when all promises to be success or will be rejected
   return Promise.all(validateLinks);
 }
-console.log(validate(pruebaDir));
+//console.log(validate(pruebaDir));
 
 module.exports = {
+  fileExist,
   getAbsolutePath,
   getMdFiles,
   getLinks,
