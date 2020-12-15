@@ -4,14 +4,14 @@ const index = require('./index.js')
 
 const mdLinks = (path, option = { validate: false }) => {
     return new Promise ((resolve, reject) => {
-    if(!index.fileExist(path)){
-        reject('The path is not a string or the file does not exist')
-    } else if (option.validate === true){
-        resolve(index.validate(path))
-    } else if(option.validate === false){
-        resolve(index.getLinks(path))
-    }
+        if(!index.fileExist(path)){
+            reject('The path is not a string or the file does not exist')
+        } else if (option.validate === true){
+            resolve(index.validate(path))
+        } else if(option.validate === false){
+            resolve(index.getLinks(path))
+        }
     })
 };
-console.log(mdLinks('./src/pruebas/folder 3'))
+console.log(mdLinks('./src/pruebas'))
 module.exports = { mdLinks };

@@ -11,9 +11,11 @@ const pruebaDir = './src/pruebas'
 const dirWithoutMd = './src/pruebas/folder 3';
 console.log("Current directory:", __dirname);
 
-/**************************** METHODS TO GET ABSOLUTE PATH *****************************/
+/******************EVALUATE IF A STRING PATH EXISTS, IT WILL BE USED IN MDLINKS FUNCTION*************** */
 //path exists, return a boolean
 const fileExist = (inputPath) => (fs.existsSync(inputPath) && typeof inputPath == 'string') ? true : false;
+
+/**************************** METHODS TO GET ABSOLUTE PATH *****************************/
 
 // path.isAbsolute(inputPath); return a boolean
 // path.resolve(inputPath); convert a path in absolute
@@ -86,27 +88,28 @@ const validate = (inputPath) => {
     .then((response) => {
       // response.ok return a boolean, it will be true to response.status >= 200 && response.status < 300
       if(response.ok){
-        ({...link,
+       console.log({...link,
         status: response.status,
         message: response.statusText
         });
       } else{
-        ({...link,
+      console.log({...link,
         status: response.status,
         message: 'FAIL'
         })
       }
     })
     .catch((error)=>{
-      ({...link,
+      console.log({...link,
       error: error.message,
+      message:'FAIL'
       })
     })
   );
   //promise.all(iterable), iterable like an array, returns a promise when all promises to be success or will be rejected
   return Promise.all(validateLinks);
 }
-//console.log(validate(pruebaDir));
+console.log(validate(pruebaDir));
 
 module.exports = {
   fileExist,
