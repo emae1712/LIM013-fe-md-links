@@ -2,19 +2,16 @@ const index = require('./index.js')
 //mdLinks(path, options), path can be abslute or relative, option is an object with validate property(boolean)
 //return a Promise array of objects [{ href, text, file, status, message }]
 
-const mdLinks = (path, option = { validate: false }) => {
+const promiseMdLinks = (path, options = { validate: false }) => {
     return new Promise ((resolve, reject) => {
-        if(!index.fileExist(path)){
-            reject('The path is not a string or the file does not exist')
-        } else if (option.validate === true){
-            resolve(index.validate(path))
-        } else if(option.validate === false){
-            resolve(index.getLinks(path))
-        }
+      if(!index.fileExist(path))reject(new Error(`No such file or directory '${path}' or is not a string`))
+      else if(index.getMdFiles(path).length == 0) reject(`Does not exist markdown files in this path '${path}'`)
+      else if(index.getLinks(path).length == 0) reject(`Does not exist links to evaluate in this path '${path}'`)
+      else (options.validate === true) ? resolve(index.validate(path)) : resolve(index.getLinks(path))
     })
 };
-// mdLinks('./src/pruebas', { validate: true})
-// .then((response)=>{
-//     console.log(response);
+// promiseMdLinks('www.google.com', { validate: true})
+// .catch((err)=>{
+//     console.log('Error: ' + err);
 // })
-module.exports = { mdLinks };
+module.exports = promiseMdLinks;

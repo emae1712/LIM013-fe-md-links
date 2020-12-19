@@ -9,7 +9,6 @@ const pathTxt = './src/pruebas/text.txt';
 const pruebaFileMd = './src/pruebas/1.md';
 const pruebaDir = './src/pruebas'
 const dirWithoutMd = './src/pruebas/folder 3';
-console.log("Current directory:", __dirname);
 
 /******************EVALUATE IF A STRING PATH EXISTS, IT WILL BE USED IN MDLINKS FUNCTION*************** */
 //path exists, return a boolean
