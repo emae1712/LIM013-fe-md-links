@@ -15,7 +15,6 @@ const dirWithoutMd = './src/pruebas/folder 3';
 const fileExist = (inputPath) => (fs.existsSync(inputPath) && typeof inputPath == 'string') ? true : false;
 
 /**************************** METHODS TO GET ABSOLUTE PATH *****************************/
-
 // path.isAbsolute(inputPath); return a boolean
 // path.resolve(inputPath); convert a path in absolute
 // Evaluate the path and get an absolute path

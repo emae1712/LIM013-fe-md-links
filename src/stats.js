@@ -6,7 +6,7 @@ const stats = (mdLinksArrayOfObject)=>{
     const total = mdLinksArrayOfObject.length;
     //new Set([iterable]) return A new set object
     const unique = new Set(mdLinksArrayOfObject.map((link) => link.href)).size;
-    return {Total: total, Unique: unique}
+    return `✍  Total: ${total} \n★  Unique: ${unique}`
 }
 
 const broken = (mdLinksArrayOfObject)=>{
@@ -14,7 +14,7 @@ const broken = (mdLinksArrayOfObject)=>{
     mdLinksArrayOfObject.forEach((link) => {
         if (link.message == 'FAIL') brokenLink += 1;
       });
-      return {Broken: brokenLink}
+      return `✂  Broken: ${brokenLink}`
 }
 
 module.exports = {

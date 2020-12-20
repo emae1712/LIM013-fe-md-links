@@ -7,7 +7,7 @@ const mdLinks = require('./consumingMdLinkAPI.js')
   .description('md links')
 
 program
-  .arguments('<path-to-file>')
+  .arguments('[path-to-file]')
   .option('--v, --validate', 'Validate links')
   .action((path, options) => {
     mdLinks(path, options);
