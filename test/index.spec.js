@@ -17,7 +17,7 @@ describe('get an absolute path', () => {
     expect(typeof index.getAbsolutePath).toBe('function');
   });
   it('should return the same path absolute', () => {
-    expect(index.getAbsolutePath('D:\\14-Java script\\LIM013-fe-md-links\\test\\md-links.spec.js')).toBe(__filename);
+    expect(index.getAbsolutePath('D:\\14-Java script\\LIM013-fe-md-links\\test\\index.spec.js')).toBe(__filename);
   });
   it('should return the absolute path of a relative path', () => {
     expect(index.getAbsolutePath('src\\mdLinks.js')).toBe('D:\\14-Java script\\LIM013-fe-md-links\\src\\mdLinks.js');
