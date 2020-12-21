@@ -10,8 +10,5 @@ const promiseMdLinks = (path, options = { validate: false }) => {
       else (options.validate === true) ? resolve(index.validate(path)) : resolve(index.getLinks(path))
     })
 };
-// promiseMdLinks('www.google.com', { validate: true})
-// .catch((err)=>{
-//     console.log('Error: ' + err);
-// })
+
 module.exports = promiseMdLinks;

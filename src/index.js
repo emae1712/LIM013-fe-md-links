@@ -4,11 +4,6 @@ const marked = require('marked');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const fetch = require('node-fetch');
-// pruebas
-const pathTxt = './src/pruebas/text.txt';
-const pruebaFileMd = './src/pruebas/1.md';
-const pruebaDir = './src/pruebas'
-const dirWithoutMd = './src/pruebas/folder 3';
 
 /******************EVALUATE IF A STRING PATH EXISTS, IT WILL BE USED IN MDLINKS FUNCTION*************** */
 //path exists, return a boolean
@@ -42,8 +37,6 @@ const getMdFiles = (inputPath)=>{
   }
   return mdFilesArray;
 }
-//console.log("prueba", getMdFiles(pruebaDir));
-//console.log("prueba file", getMdFiles(pruebaFileMd));
 
 /*************************** METHODS TO GET LINKS FROM MD FILES *******************************/
 // fs.readFileSync (), read the file and return its content
