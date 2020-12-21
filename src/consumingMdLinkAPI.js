@@ -55,4 +55,4 @@ const mdLinks = (path,options) =>{
 return mdLinks;
 }
 module.exports = mdLinks;
-//console.log(mdLinks('./src/pruebas/', {validate: true}))
+//console.log(mdLinks('test/Directory_test', {validate: true}))

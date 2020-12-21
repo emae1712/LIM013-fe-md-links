@@ -12,3 +12,7 @@ const promiseMdLinks = (path, options = { validate: false }) => {
 };
 
 module.exports = promiseMdLinks;
+promiseMdLinks('test/Directory_test/folder_2', {validate: false})
+.catch((response)=>{
+  console.log(response);
+});

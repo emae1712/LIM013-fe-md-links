@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for stats.js</title>
+    <title>Code coverage report for mdLinks.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,27 +19,27 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> stats.js</h1>
+        <h1><a href="index.html">All files</a> mdLinks.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -74,59 +74,41 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a>
-<a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//contain basic statistics about links
-// output text Total Unique(non-repeating values)
-// --stats --validate output Total Unique Broken
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const index = require('./index.js')
+//mdLinks(path, options), path can be abslute or relative, option is an object with validate property(boolean)
+//return a Promise array of objects [{ href, text, file, status, message }]
 &nbsp;
-const stats = (mdLinksArrayOfObject)=&gt;{
-    const total = mdLinksArrayOfObject.length;
-    //new Set([iterable]) return A new set object
-    const unique = new Set(mdLinksArrayOfObject.map((link) =&gt; link.href)).size;
-    return `✍  Total: ${total} \n★  Unique: ${unique}`
-}
+const promiseMdLinks = (path, options = { validate: false }) =&gt; {
+    return new Promise ((resolve, reject) =&gt; {
+      if(!index.fileExist(path))reject(new Error(`No such file or directory '${path}' or is not a string`))
+      else if(index.getMdFiles(path).length == 0) reject(`Does not exist markdown files in this path '${path}'`)
+      else if(index.getLinks(path).length == 0) reject(`Does not exist links to evaluate in this path '${path}'`)
+      else (options.validate === true) ? resolve(index.validate(path)) : resolve(index.getLinks(path))
+    })
+};
 &nbsp;
-const broken = (mdLinksArrayOfObject)=&gt;{
-    let brokenLink = 0;
-    mdLinksArrayOfObject.forEach((link) =&gt; {
-        if (link.message == 'FAIL') brokenLink += 1;
-      });
-      return `✂  Broken: ${brokenLink}`
-}
-&nbsp;
-module.exports = {
-    stats,
-    broken,
-  };
- </pre></td></tr></table></pre>
+module.exports = promiseMdLinks;
+promiseMdLinks('test/Directory_test/folder_2', {validate: false})
+.catch((response)=&gt;{
+  console.log(response);
+});</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
