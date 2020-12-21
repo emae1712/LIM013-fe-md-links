@@ -1,8 +1,10 @@
 const promiseMdLinks = require('./mdLinks.js');
 const option = require('./stats.js');
 const chalk = require('chalk');
+const figlet = require('figlet');
 
 const mdLinks = (path,options) =>{
+  console.log(chalk.bold.cyanBright(figlet.textSync('md-links',{horizontalLayout: 'full'})))
   promiseMdLinks(path,options)
     .then((mdLinksArrayOfObject)=>{
       const stats = option.stats(mdLinksArrayOfObject);
@@ -53,4 +55,4 @@ const mdLinks = (path,options) =>{
 return mdLinks;
 }
 module.exports = mdLinks;
-console.log(mdLinks('./src/pruebas/', {validate: true}))
+//console.log(mdLinks('./src/pruebas/', {validate: true}))
