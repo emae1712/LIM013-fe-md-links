@@ -17,7 +17,13 @@
     "type": "git",
     "url": "git+https://github.com/emae1712/LIM013-fe-md-links.git"
   },
-  "keywords": ["node.js", "mdLinksAPI", "markdown links", "validate", "statistics"],
+  "keywords": [
+    "node.js",
+    "mdLinksAPI",
+    "markdown links",
+    "validate",
+    "statistics"
+  ],
   "author": "Melissa Arango <melissa.aechegaray@gmail.com>",
   "license": "MIT",
   "bugs": {
