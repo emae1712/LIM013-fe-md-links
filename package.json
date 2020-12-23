@@ -1,5 +1,5 @@
 {
-  "name": "emae1712--md-links",
+  "name": "emae--md-links",
   "version": "1.0.0",
   "description": "md-links is an executable that reads and analyzes files in Markdown format, to verify the links they contain and report some statistics.",
   "main": "src/CLI.js",

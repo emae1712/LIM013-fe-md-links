@@ -94,7 +94,7 @@ describe('file exists', () => {
     });
     it('should return an error, because the path does not exist', () =>{mdLinks('test/Directory_tet', {validate: true})
       .catch(err =>{
-        expect(err.message).toEqual("No such file or directory 'test/Directory_tet' or is not a string");
+        expect(err.message).toEqual("ENOENT: no such file or directory, lstat 'D:\\14-Java script\\LIM013-fe-md-links\\test\\Directory_tet'");
       })
     });
     it('should return a warning, the path does not contain markdown files', () =>{mdLinks('test/Directory_test/folder_3')

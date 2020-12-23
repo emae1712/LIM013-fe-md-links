@@ -16,4 +16,6 @@ program
   });
 
 program.parse(process.argv) //is a interface to get arguments by the shell when run the command line, returns an array called argv (argument-values)
+
+console.log(process.argv);
 //console.log('hola cli');

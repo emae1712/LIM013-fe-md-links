@@ -21,6 +21,7 @@ const getMdFiles = (inputPath)=>{
   const isFile = (inputPath) => fs.lstatSync(inputPath).isFile();
   const isDirectory = (inputPath) => fs.lstatSync(inputPath).isDirectory();
   const mdExtension = (inputPath) => path.extname(inputPath) == '.md'; // return a string with the extension portion of the path, equal returns boolean
+  const node_modules = (inputPath) => path.basename(inputPath) == 'node_modules';
 
   let mdFilesArray = [];
   const absolutePath = getAbsolutePath(inputPath);
@@ -28,7 +29,7 @@ const getMdFiles = (inputPath)=>{
   if(isFile(absolutePath) && mdExtension(absolutePath)){
     mdFilesArray.push(absolutePath);
     // recursion
-  } else if(isDirectory(absolutePath)){
+  } else if(isDirectory(absolutePath) && !node_modules(absolutePath)){
     fs.readdirSync(absolutePath).forEach((file) =>{
       //path.join(absolutePath, file); path.join is a method that converts path segments to a single path, this case each file to absolute path
       //concat create new array, I want to re asign to mdFilesArray
@@ -100,7 +101,6 @@ const validate = (inputPath) => {
   //promise.all(iterable), iterable like an array, returns a promise when all promises to be success or will be rejected
   return Promise.all(validateLinks);
 }
-//console.log(validate(pruebaDir));
 
 module.exports = {
   fileExist,
