@@ -12,6 +12,27 @@
 * [8. Checklist](#8-checklist)
 
 ***
+# md-links
+
+md-links
+
+## Install
+
+```npm
+npm i emae--md-links
+```
+
+# Usage
+
+```bash
+md-links
+```
+
+# Contributing
+If someone wants to add or improve something, I invite you to collaborate directly in this repository: [md-links](https://github.com/emae1712/LIM013-fe-md-links)
+
+# License
+md-links is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## 1. Preámbulo
 
