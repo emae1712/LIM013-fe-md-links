@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://ibb.co/ZT3LWhv"><img src="https://i.ibb.co/ZT3LWhv/md-links.png" alt="md-links" border="0"></a>
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/4NcmPjC/md-links.png" alt="md-links" border="0"></a>
   </p>
 # Markdown Links
 
