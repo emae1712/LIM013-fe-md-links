@@ -14,12 +14,12 @@
 ***
 # md-links
 
-md-links
+md-links is an executable that reads and analyzes files in Markdown format, to verify the links they contain and report some statistics.
 
 ## Install
 
 ```npm
-npm i emae--md-links
+npm install -g emae--md-links
 ```
 
 # Usage
@@ -158,22 +158,7 @@ A continuación puedes ver los objetivos de aprendizaje de este proyecto:
 
 ## 5. Criterios de aceptación mínimos del proyecto
 
-Para comenzar este proyecto tendrás que hacer un _fork_ y _clonar_ este
-repositorio.
 
-Antes de comenzar a codear, es necesario que pensemos en la arquitectura y
-boilerplate del proyecto, por lo que `antes de que empieces tu planificacion
-y a trabajar en la funcionalidad de tu proyecto deberás de haber
-creado tu boilerplate y tus tests`. Esto debería quedar
-detallado en tu repo y haberte asegurado de haber recibido feedback de uno
-de tus coaches. Una vez hayas terminado de definir la arquitectura y los tests
-de tu proyecto estarás lista para iniciar con tu **planificacion** por lo cual
-deberas de hacer uso de una serie de _issues_ y _milestones_ para priorizar
-tus tareas y crear un _project_ para organizar el trabajo y poder hacer
-seguimiento de tu progreso.
-
-Dentro de cada _milestone_ se crearán y asignarán los _issues_ que cada quien
-considere necesarios.
 
 ### Archivos del proyecto
 
@@ -346,31 +331,7 @@ que usamos para la currícula no está publicado en el registro público de NPM,
 así que lo instalamos directamente desde GitHub con el comando `npm install
 Laboratoria/course-parser`.
 
-### Sugerencias de implementación
 
-La implementación de este proyecto tiene varias partes: leer del sistema de
-archivos, recibir argumentos a través de la línea de comando, analizar texto,
-hacer consultas HTTP, ... y todas estas cosas pueden enfocarse de muchas formas,
-tanto usando librerías como implementando en VanillaJS.
-
-Por poner un ejemplo, el _parseado_ (análisis) del markdown para extraer los
-links podría plantearse de las siguientes maneras (todas válidas):
-
-* Usando un _módulo_ como [markdown-it](https://github.com/markdown-it/markdown-it),
-  que nos devuelve un arreglo de _tokens_ que podemos recorrer para identificar
-  los links.
-* Siguiendo otro camino completamente, podríamos usar
-  [expresiones regulares (`RegExp`)](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions).
-* También podríamos usar una combinación de varios _módulos_ (podría ser válido
-  transformar el markdown a HTML usando algo como [marked](https://github.com/markedjs/marked)
-  y de ahí extraer los link con una librería de DOM como [JSDOM](https://github.com/jsdom/jsdom)
-  o [Cheerio](https://github.com/cheeriojs/cheerio) entre otras).
-* Usando un _custom renderer_ de [marked](https://github.com/markedjs/marked)
-  (`new marked.Renderer()`).
-
-No dudes en consultar a tus compañeras, coaches y/o el [foro de la comunidad](http://community.laboratoria.la/c/js)
-si tienes dudas existenciales con respecto a estas decisiones. No existe una
-"única" manera correcta :wink:
 
 ### Tutoriales / NodeSchool workshoppers
 
