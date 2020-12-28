@@ -10,11 +10,12 @@
 * [1. Preamble](#1-preamble)
 * [2. Install](#2-install)
 * [3. Usage](#3-usage)
-* [4. Pseudocode](#4-pseudocode)
-* [5. Contributing](#5-contributing)
-* [6. License](#6-license)
-* [7. Pistas, tips y lecturas complementarias](#7-pistas-tips-y-lecturas-complementarias)
-* [8. Checklist](#8-checklist)
+* [4. Considerations](#4-considerartions)
+* [5. Pseudocode](#5-pseudocode)
+* [6. Contributing](#6-contributing)
+* [7. License](#7-license)
+* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
+* [9. Objetivos de aprendizaje](#9.objetivos-de-aprendizaje)
 
 ***
 ## 1. 💡Preamble
@@ -46,7 +47,7 @@ Global options:
   -V, --version    output the version number
   -h, --help       display help for command
 ```
-### Example
+### Examples
 
 **Input absolute or relative path to file or directory.**`Output: file, href, text` 
 
@@ -65,7 +66,42 @@ Global options:
   <a href="https://imgbb.com/"><img src="https://i.ibb.co/MVrWXpK/stats-validate.jpg" alt="stats-validate" border="0"></a>
 </p>
 
-mdLinks(path, options)
+## 4. ⚠️Considerations
+This package does not consider the analysis of the _node_modules_ directory, because a project can have several libraries installed, so only markdown files created by the user are considered.
+<p align="center">
+<a href="https://ibb.co/g4nncMr"><img src="https://i.ibb.co/jJppjv8/warning.jpg" alt="warning" border="0"></a>
+</p>
+
+If the entered path has blank spaces, place it in quotation marks to avoid being considered an error.
+
+Example: Entering path `D:\14-Java script\LIM013-fe-md-links`
+<p align="center">
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/vZVtZqF/error.jpg" alt="error" border="0"></a>
+</p>
+
+## 5. </>Pseudocode
+
+### API mdLinks(path, options)
+
+##### Arguments
+
+* `path`: Absolute or relative path to the file or directory. If the past path is
+   relative, should resolve to relative to the directory from which it is invoked
+   node - _current working directory_).
+* `options`: An object with the following properties:
+   - `validate`: Boolean that determines if you want to validate the links
+     found.
+
+##### Return value
+
+The function must return a promise (`Promise`) that resolves to an array
+(`Array`) of objects (` Object`), where each object represents a link and contains
+the following properties:
+
+* `href`: URL found.
+* `text`: Text that appeared inside the link (` <a> `).
+* `file`: Path of the file where the link was found.
+
 ```js
 Inicio
 -Ingresar path
@@ -123,7 +159,12 @@ funcion getLinks
   fin paraCada
 Fin funcion
 ```
-CLI
+### CLI
+
+The executable of our application must be able to be executed as follows through the terminal:
+
+`md-links <path-to-file> [options]`
+
 ```js
 Módulo md-links <path-to-file> [options]
 Pedir path
@@ -138,17 +179,65 @@ Pedir path
 Fin módulo
 ```
 
-# Contributing
+## 6. 👥Contributing
 If someone wants to add or improve something, I invite you to collaborate directly in this repository: [md-links](https://github.com/emae1712/LIM013-fe-md-links)
 
-# License
+## 7. 👁️‍🗨️License
 md-links is released under the [MIT License](https://opensource.org/licenses/MIT).
 
+## 8. Pistas, tips y lecturas complementarias
+
+### FAQs
+
+#### ¿Cómo hago para que mi módulo sea _instalable_ desde GitHub?
+
+Para que el módulo sea instalable desde GitHub solo tiene que:
+
+* Estar en un repo público de GitHub
+* Contener un `package.json` válido
+
+Con el comando `npm install githubname/reponame` podemos instalar directamente
+desde GitHub. Ver [docs oficiales de `npm install` acá](https://docs.npmjs.com/cli/install).
+
+Por ejemplo, el [`course-parser`](https://github.com/Laboratoria/course-parser)
+que usamos para la currícula no está publicado en el registro público de NPM,
+así que lo instalamos directamente desde GitHub con el comando `npm install
+Laboratoria/course-parser`.
 
 
 
+### Tutoriales / NodeSchool workshoppers
 
-## 3. Objetivos de aprendizaje
+* [learnyounode](https://github.com/workshopper/learnyounode)
+* [how-to-npm](https://github.com/workshopper/how-to-npm)
+* [promise-it-wont-hurt](https://github.com/stevekane/promise-it-wont-hurt)
+
+### Otros recursos
+
+* [Acerca de Node.js - Documentación oficial](https://nodejs.org/es/about/)
+* [Node.js file system - Documentación oficial](https://nodejs.org/api/fs.html)
+* [Node.js http.get - Documentación oficial](https://nodejs.org/api/http.html#http_http_get_options_callback)
+* [Node.js - Wikipedia](https://es.wikipedia.org/wiki/Node.js)
+* [What exactly is Node.js? - freeCodeCamp](https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5)
+* [¿Qué es Node.js y para qué sirve? - drauta.com](https://www.drauta.com/que-es-nodejs-y-para-que-sirve)
+* [¿Qué es Nodejs? Javascript en el Servidor - Fazt en YouTube](https://www.youtube.com/watch?v=WgSc1nv_4Gw)
+* [¿Simplemente qué es Node.js? - IBM Developer Works, 2011](https://www.ibm.com/developerworks/ssa/opensource/library/os-nodejs/index.html)
+* [Node.js y npm](https://www.genbeta.com/desarrollo/node-js-y-npm)
+* [Módulos, librerías, paquetes, frameworks... ¿cuál es la diferencia?](http://community.laboratoria.la/t/modulos-librerias-paquetes-frameworks-cual-es-la-diferencia/175)
+* [Asíncronía en js](https://carlosazaustre.es/manejando-la-asincronia-en-javascript)
+* [NPM](https://docs.npmjs.com/getting-started/what-is-npm)
+* [Publicar packpage](https://docs.npmjs.com/getting-started/publishing-npm-packages)
+* [Crear módulos en Node.js](https://docs.npmjs.com/getting-started/publishing-npm-packages)
+* [Leer un archivo](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback)
+* [Leer un directorio](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)
+* [Path](https://nodejs.org/api/path.html)
+* [Linea de comando CLI](https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e)
+- [Promise](https://javascript.info/promise-basics)
+- [Comprendiendo Promesas en Js](https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1)
+- [Pill de recursión - video](https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s)
+- [Pill de recursión - repositorio](https://github.com/merunga/pildora-recursion)
+
+## 9. Objetivos de aprendizaje
 
 Diseñar tu propia librería es una experiencia fundamental para cualquier
 desarrollador porque que te obliga a pensar en la interfaz (API) de tus
@@ -211,210 +300,3 @@ A continuación puedes ver los objetivos de aprendizaje de este proyecto:
 
 ***
 
-## 5. Criterios de aceptación mínimos del proyecto
-
-
-
-### Archivos del proyecto
-
-Estos son los criterios de lo que debe ocurrir para que se satisfagan 
-las necesidades del usuario:
-
-- Instalar la libreria via `npm install --global <github-user>/md-links`
-
-### `README.md`
-
-- Encontrar el *pseudo codigo* o *diagrama de flujo* con el algoritmo que
-  soluciona el problema.
-- Encontrar un board con el backlog para la implementación de la librería.
-- Encontrar la documentación técnica de la librería.
-- Encontrar la Guía de uso e instalación de la librería.
-
-### API `mdLinks(path, opts)`
-
-- El módulo exporta una función con la interfaz (API) esperada.
-- El módulo implementa soporte para archivo individual
-- El módulo implementa soporte para directorios
-- El módulo implementa `options.validate`
-
-### CLI
-
-- Expone ejecutable `md-links` en el path (configurado en `package.json`)
-- Se ejecuta sin errores / output esperado.
-- El ejecutable implementa `--validate`.
-- El ejecutable implementa `--stats`.
-- El ejecutable implementa `--validate` y `--stats` juntos.
-
-### JavaScript API
-
-El módulo debe poder importarse en otros scripts de Node.js y debe ofrecer la
-siguiente interfaz:
-
-#### `mdLinks(path, options)`
-
-##### Argumentos
-
-* `path`: Ruta absoluta o relativa al archivo o directorio. Si la ruta pasada es
-  relativa, debe resolverse como relativa al directorio desde donde se invoca
-  node - _current working directory_).
-* `options`: Un objeto con las siguientes propiedades:
-  - `validate`: Booleano que determina si se desea validar los links
-    encontrados.
-
-##### Valor de retorno
-
-La función debe retornar una promesa (`Promise`) que resuelva a un arreglo
-(`Array`) de objetos (`Object`), donde cada objeto representa un link y contiene
-las siguientes propiedades:
-
-* `href`: URL encontrada.
-* `text`: Texto que aparecía dentro del link (`<a>`).
-* `file`: Ruta del archivo donde se encontró el link.
-
-#### Ejemplo
-
-```js
-const mdLinks = require("md-links");
-
-mdLinks("./some/example.md")
-  .then(links => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
-
-mdLinks("./some/example.md", { validate: true })
-  .then(links => {
-    // => [{ href, text, file, status, message }]
-  })
-  .catch(console.error);
-
-mdLinks("./some/dir")
-  .then(links => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
-```
-
-### CLI (Command Line Interface - Interfaz de Línea de Comando)
-
-El ejecutable de nuestra aplicación debe poder ejecutarse de la siguiente
-manera a través de la terminal:
-
-`md-links <path-to-file> [options]`
-
-Por ejemplo:
-
-```sh
-$ md-links ./some/example.md
-./some/example.md http://algo.com/2/3/ Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html algún doc
-./some/example.md http://google.com/ Google
-```
-
-El comportamiento por defecto no debe validar si las URLs responden ok o no,
-solo debe identificar el archivo markdown (a partir de la ruta que recibe como
-argumento), analizar el archivo Markdown e imprimir los links que vaya
-encontrando, junto con la ruta del archivo donde aparece y el texto
-que hay dentro del link (truncado a 50 caracteres).
-
-#### Options
-
-##### `--validate`
-
-Si pasamos la opción `--validate`, el módulo debe hacer una petición HTTP para
-averiguar si el link funciona o no. Si el link resulta en una redirección a una
-URL que responde ok, entonces consideraremos el link como ok.
-
-Por ejemplo:
-
-```sh
-$ md-links ./some/example.md --validate
-./some/example.md http://algo.com/2/3/ ok 200 Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html fail 404 algún doc
-./some/example.md http://google.com/ ok 301 Google
-```
-
-Vemos que el _output_ en este caso incluye la palabra `ok` o `fail` después de
-la URL, así como el status de la respuesta recibida a la petición HTTP a dicha
-URL.
-
-##### `--stats`
-
-Si pasamos la opción `--stats` el output (salida) será un texto con estadísticas
-básicas sobre los links.
-
-```sh
-$ md-links ./some/example.md --stats
-Total: 3
-Unique: 3
-```
-
-También podemos combinar `--stats` y `--validate` para obtener estadísticas que
-necesiten de los resultados de la validación.
-
-```sh
-$ md-links ./some/example.md --stats --validate
-Total: 3
-Unique: 3
-Broken: 1
-```
-
-## 6. Entregables
-
-Módulo instalable via `npm install <github-user>/md-links`. Este módulo debe
-incluir tanto un ejecutable como una interfaz que podamos importar con `require`
-para usarlo programáticamente.
-
-***
-
-## 7. Pistas, tips y lecturas complementarias
-
-### FAQs
-
-#### ¿Cómo hago para que mi módulo sea _instalable_ desde GitHub?
-
-Para que el módulo sea instalable desde GitHub solo tiene que:
-
-* Estar en un repo público de GitHub
-* Contener un `package.json` válido
-
-Con el comando `npm install githubname/reponame` podemos instalar directamente
-desde GitHub. Ver [docs oficiales de `npm install` acá](https://docs.npmjs.com/cli/install).
-
-Por ejemplo, el [`course-parser`](https://github.com/Laboratoria/course-parser)
-que usamos para la currícula no está publicado en el registro público de NPM,
-así que lo instalamos directamente desde GitHub con el comando `npm install
-Laboratoria/course-parser`.
-
-
-
-### Tutoriales / NodeSchool workshoppers
-
-* [learnyounode](https://github.com/workshopper/learnyounode)
-* [how-to-npm](https://github.com/workshopper/how-to-npm)
-* [promise-it-wont-hurt](https://github.com/stevekane/promise-it-wont-hurt)
-
-### Otros recursos
-
-* [Acerca de Node.js - Documentación oficial](https://nodejs.org/es/about/)
-* [Node.js file system - Documentación oficial](https://nodejs.org/api/fs.html)
-* [Node.js http.get - Documentación oficial](https://nodejs.org/api/http.html#http_http_get_options_callback)
-* [Node.js - Wikipedia](https://es.wikipedia.org/wiki/Node.js)
-* [What exactly is Node.js? - freeCodeCamp](https://medium.freecodecamp.org/what-exactly-is-node-js-ae36e97449f5)
-* [¿Qué es Node.js y para qué sirve? - drauta.com](https://www.drauta.com/que-es-nodejs-y-para-que-sirve)
-* [¿Qué es Nodejs? Javascript en el Servidor - Fazt en YouTube](https://www.youtube.com/watch?v=WgSc1nv_4Gw)
-* [¿Simplemente qué es Node.js? - IBM Developer Works, 2011](https://www.ibm.com/developerworks/ssa/opensource/library/os-nodejs/index.html)
-* [Node.js y npm](https://www.genbeta.com/desarrollo/node-js-y-npm)
-* [Módulos, librerías, paquetes, frameworks... ¿cuál es la diferencia?](http://community.laboratoria.la/t/modulos-librerias-paquetes-frameworks-cual-es-la-diferencia/175)
-* [Asíncronía en js](https://carlosazaustre.es/manejando-la-asincronia-en-javascript)
-* [NPM](https://docs.npmjs.com/getting-started/what-is-npm)
-* [Publicar packpage](https://docs.npmjs.com/getting-started/publishing-npm-packages)
-* [Crear módulos en Node.js](https://docs.npmjs.com/getting-started/publishing-npm-packages)
-* [Leer un archivo](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback)
-* [Leer un directorio](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)
-* [Path](https://nodejs.org/api/path.html)
-* [Linea de comando CLI](https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e)
-- [Promise](https://javascript.info/promise-basics)
-- [Comprendiendo Promesas en Js](https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1)
-- [Pill de recursión - video](https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s)
-- [Pill de recursión - repositorio](https://github.com/merunga/pildora-recursion)
