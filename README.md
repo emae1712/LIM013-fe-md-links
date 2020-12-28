@@ -1,7 +1,9 @@
 <p align="center">
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/4NcmPjC/md-links.png" alt="md-links" border="0"></a>
   </p>
-# Markdown Links
+  
+# Markdown Links 👩‍💻
+>NPM package that reads and analyzes files in Markdown format, to verify the links they contain and report some statistics.
 
 ## Índice
 
@@ -16,7 +18,62 @@
 
 ***
 # md-links
+md-links API
+```js
+Inicio
+-Ingresar path
+-Leer path
+-Si (path.isAbsolute) entonces retornar path
+   funcion getMdFiles
+   input: path absoluto
+   lista[mdFiles] = [] vacia //Definimos el array para enlistar markdown files
+   //recursion
+    Si (es directorio && no es node_modules) entonces
+     Leer directorio 
+     Retornar lista[mdFiles] = file + getMdFiles(path/file)
+     
+    //base case
+    De lo contrario Si (es file) entonces 
+      Si (extensión .md) entonces
+       Añadir file a lista[mdFiles]
+       Retornar lista[mdFiles]
+      De lo contrario
+       Escribir("No existen archivos markdown en este path")
+      Fin Si
+    
+    Fin Si
+    Fin funcion
+   
+-De lo contrario convertir path a absoluta (path.resolve)
+-Fin Si
 
+//Get links
+funcion getLinks
+ input: path absoluto
+ lista[mdLinks] = [] vacia //Definimos el array para enlistar links of markdown files
+ 
+ lista[mdFiles] = getMdFiles(path)
+  paraCada markdown-file de lista[mdFiles]
+    Leer file
+    Convertir a HTML //marked module
+    Seleccionar todos los anchor, propiedad href con protocolo 'http'
+    Si(existe anchor) entonces
+     paraCada anchor
+      Si(validate.option == false) entonces
+        Añadir objeto:{href, text, file}
+        retornar lista[mdLinks]
+      De lo contrario
+        Hacer petición HTTP // fetch module
+        Añadir propiedades: {status, message}
+        retornar lista[mdLinks]
+      Fin Si
+     fin paraCada
+    De lo contrario
+     Escribir ("No existen links en los archivos markdown de este path")
+    Fin Si
+  fin paraCada
+Fin funcion
+```
 md-links is an executable that reads and analyzes files in Markdown format, to verify the links they contain and report some statistics.
 
 ## Install
