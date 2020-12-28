@@ -30,7 +30,9 @@ Inicio
    //recursion
     Si (es directorio && no es node_modules) entonces
      Leer directorio 
-     Retornar lista[mdFiles] = file + getMdFiles(path/file)
+     paraCada file de directorio
+      Retornar lista[mdFiles] = file + getMdFiles(path/file)
+     fin paraCada
      
     //base case
     De lo contrario Si (es file) entonces 
@@ -73,6 +75,20 @@ funcion getLinks
    -Fin Si
   fin paraCada
 Fin funcion
+```
+CLI
+```js
+Módulo md-links <path-to-file> [options]
+Pedir path
+ Mostrar file, href, text
+ Si(--validate) entonces
+  Mostrar file, href, text, status, message
+ De lo contrario Si(--stats) entonces
+  Mostrar total, unique
+ De lo contrario Si (--validate --stats) entonces
+  Mostrar total, unique, broken
+ Fin Si
+Fin módulo
 ```
 md-links is an executable that reads and analyzes files in Markdown format, to verify the links they contain and report some statistics.
 
