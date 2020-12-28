@@ -27,15 +27,24 @@
 
 These `Markdown` files usually contain _links_ that are often broken or no longer valid and that greatly damages the value of the information that you want to share.
 
-## 2. :arrow_down: Install
+## 2. ⬇️Install
 
 ```npm
 npm install -g emae--md-links
 ```
 ## 3. 🔍Usage
 
+After installing globally (or linking with npm link) you should have the `md-links` command available in your terminal
 ```bash
-md-links <path-to-file> [options]
+Usage: md-links <path-to-file> [options]
+
+Commands:
+  --v, --validate  Show validate links, makes an HTTP request to find out if the link works or not
+  --s, --stats     Show basic statistics about links
+  
+Global options:
+  -V, --version    output the version number
+  -h, --help       display help for command
 ```
 
 mdLinks(path, options)
@@ -110,10 +119,6 @@ Pedir path
  Fin Si
 Fin módulo
 ```
-md-links is an executable that reads and analyzes files in Markdown format, to verify the links they contain and report some statistics.
-
-
-
 
 # Contributing
 If someone wants to add or improve something, I invite you to collaborate directly in this repository: [md-links](https://github.com/emae1712/LIM013-fe-md-links)
@@ -123,20 +128,7 @@ md-links is released under the [MIT License](https://opensource.org/licenses/MIT
 
 
 
-## 2. Resumen del proyecto
 
-[Node.js](https://nodejs.org/es/) es un entorno de ejecución para JavaScript
-construido con el [motor de JavaScript V8 de Chrome](https://developers.google.com/v8/).
-Esto nos va a permitir ejecutar JavaScript en el entorno del sistema operativo,
-ya sea tu máquina o un servidor, lo cual nos abre las puertas para poder
-interactuar con el sistema en sí, archivos, redes, ...
-
-En este proyecto nos alejamos un poco del navegador para construir un programa
-que se ejecute usando Node.js, donde aprenderemos sobre cómo interactuar con el
-sistema archivos, con el entorno (_proceso_, _env_, _stdin/stdout/stderr_), ...
-
-En este proyecto crearás una herramienta de línea de comando (CLI) así como tu
-propia librería (o biblioteca - library) en JavaScript.
 
 ## 3. Objetivos de aprendizaje
 
@@ -200,31 +192,6 @@ A continuación puedes ver los objetivos de aprendizaje de este proyecto:
 * [ ] [Recursión.](https://www.youtube.com/watch?v=lPPgY3HLlhQ)
 
 ***
-
-## 4. Consideraciones generales
-
-* Este proyecto se debe "resolver" de manera individual.
-
-* La librería y script ejecutable (herramienta de línea de comando -
-  CLI) debe estar implementada en JavaScript para ser ejecutada con
-  Node.js. **Está permitido usar librerías externas**.
-
-* Tu módulo debe ser instalable via `npm install <github-user>/md-links`. Este
-  módulo debe incluir tanto un _ejecutable_ que podamos invocar en la línea de
-  comando como una interfaz que podamos importar con `require` para usarlo
-  programáticamente.
-
-* Los tests unitarios deben cubrir un mínimo del 70% de _statements_,
-  _functions_, _lines_ y _branches_. Te recomendamos explorar [Jest](https://jestjs.io/)
-  para tus pruebas unitarias.
-
-* Los tests unitarios deben cubrir un mínimo del 70% de statements, functions, lines y branches., ademas de pasar los test y el linter. Te recomendamos utilizar Jest para tus pruebas unitarias.
-
-* Para este proyecto no está permitido utilizar `async/await`.
-
-* Para este proyecto es opcional el uso de ES Modules `(import/export)`, en el
-  caso optes utilizarlo deberás de crear un script de `build` en el `package.json`
-  que los transforme en `requires` y `module.exports` con ayuda de babel.
 
 ## 5. Criterios de aceptación mínimos del proyecto
 
