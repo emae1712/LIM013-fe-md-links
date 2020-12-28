@@ -48,15 +48,21 @@ Global options:
 ```
 ### Example
 
-**Input absolute or relative path to file or directory.`Output: href, text, file` **
+**Input absolute or relative path to file or directory.**`Output: file, href, text` 
 
 <p align="center">
   <img src="https://i.ibb.co/mckwRy0/path.jpg" alt="path" >
 </p>
 
-**Input validate option. `Output: href, text, file, status, message` **
+**Choose a validate option.** `Output: file, href, status, message, text` 
 <p align="center">
   <a href="https://ibb.co/F8hTdKL"><img src="https://i.ibb.co/QYJwxf3/validate.jpg" alt="validate" border="0"></a>
+</p>
+
+**Choose a stats option.** `Output: Total, Unique` **or stats and validate options** `Output: Total, Unique, Broken`
+<p align="center">
+  <a href="https://imgbb.com/"><img src="https://i.ibb.co/fkQxMQm/stats.jpg" alt="stats" border="0"></a>
+  <a href="https://imgbb.com/"><img src="https://i.ibb.co/MVrWXpK/stats-validate.jpg" alt="stats-validate" border="0"></a>
 </p>
 
 mdLinks(path, options)
