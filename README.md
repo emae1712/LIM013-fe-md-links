@@ -10,9 +10,9 @@
 * [1. Preamble](#1-preamble)
 * [2. Install](#2-install)
 * [3. Usage](#3-usage)
-* [4. Consideraciones generales](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Entregables](#6-entregables)
+* [4. Pseudocode](#4-pseudocode)
+* [5. Contributing](#5-contributing)
+* [6. License](#6-license)
 * [7. Pistas, tips y lecturas complementarias](#7-pistas-tips-y-lecturas-complementarias)
 * [8. Checklist](#8-checklist)
 
@@ -46,6 +46,18 @@ Global options:
   -V, --version    output the version number
   -h, --help       display help for command
 ```
+### Example
+
+**Input absolute or relative path to file or directory.`Output: href, text, file` **
+
+<p align="center">
+  <img src="https://i.ibb.co/mckwRy0/path.jpg" alt="path" >
+</p>
+
+**Input validate option. `Output: href, text, file, status, message` **
+<p align="center">
+  <a href="https://ibb.co/F8hTdKL"><img src="https://i.ibb.co/QYJwxf3/validate.jpg" alt="validate" border="0"></a>
+</p>
 
 mdLinks(path, options)
 ```js
