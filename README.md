@@ -15,7 +15,7 @@
 * [6. Contributing](#6-contributing)
 * [7. License](#7-license)
 * [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
-* [9. Objetivos de aprendizaje](#9.objetivos-de-aprendizaje)
+* [9. Objetivos de aprendizaje](#9-objetivos-de-aprendizaje)
 
 ***
 ## 1. 💡Preamble
