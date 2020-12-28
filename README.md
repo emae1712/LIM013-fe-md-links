@@ -27,7 +27,7 @@
 
 These `Markdown` files usually contain _links_ that are often broken or no longer valid and that greatly damages the value of the information that you want to share.
 
-## 2. :arrow_down:Install
+## 2. :arrow_down: Install
 
 ```npm
 npm install -g emae--md-links
@@ -35,10 +35,10 @@ npm install -g emae--md-links
 ## 3. 🔍Usage
 
 ```bash
-md-links
+md-links <path-to-file> [options]
 ```
 
-md-links API
+mdLinks(path, options)
 ```js
 Inicio
 -Ingresar path
@@ -433,35 +433,3 @@ Laboratoria/course-parser`.
 - [Comprendiendo Promesas en Js](https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1)
 - [Pill de recursión - video](https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s)
 - [Pill de recursión - repositorio](https://github.com/merunga/pildora-recursion)
-
-## 8. Checklist
-
-### General
-
-* [ ] Puede instalarse via `npm install --global <github-user>/md-links`
-
-### `README.md`
-
-* [ ] Un board con el backlog para la implementación de la librería.
-* [ ] Documentación técnica de la librería.
-* [ ] Guía de uso e instalación de la librería
-
-### API `mdLinks(path, opts)`
-
-* [ ] El módulo exporta una función con la interfaz (API) esperada.
-* [ ] Implementa soporte para archivo individual
-* [ ] Implementa soporte para directorios
-* [ ] Implementa `options.validate`
-
-### CLI
-
-* [ ] Expone ejecutable `md-links` en el path (configurado en `package.json`)
-* [ ] Se ejecuta sin errores / output esperado
-* [ ] Implementa `--validate`
-* [ ] Implementa `--stats`
-
-### Pruebas / tests
-
-* [ ] Pruebas unitarias cubren un mínimo del 70% de statements, functions,
-  lines, y branches.
-* [ ] Pasa tests (y linters) (`npm test`).
