@@ -57,7 +57,7 @@ funcion getLinks
     Leer file
     Convertir a HTML //marked module
     Seleccionar todos los anchor, propiedad href con protocolo 'http'
-    Si(existe anchor) entonces
+   -Si(existe anchor) entonces
      paraCada anchor
       Si(validate.option == false) entonces
         Añadir objeto:{href, text, file}
@@ -68,9 +68,9 @@ funcion getLinks
         retornar lista[mdLinks]
       Fin Si
      fin paraCada
-    De lo contrario
+   -De lo contrario
      Escribir ("No existen links en los archivos markdown de este path")
-    Fin Si
+   -Fin Si
   fin paraCada
 Fin funcion
 ```
