@@ -7,9 +7,9 @@
 
 ## Índice
 
-* [1. Preámbulo](#1-preámbulo)
-* [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
+* [1. Preamble](#1-preamble)
+* [2. Install](#2-install)
+* [3. Usage](#3-usage)
 * [4. Consideraciones generales](#4-consideraciones-generales)
 * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
 * [6. Entregables](#6-entregables)
@@ -17,7 +17,27 @@
 * [8. Checklist](#8-checklist)
 
 ***
-# md-links
+## 1. 💡Preamble
+
+<p >
+  <img align="right" height="200px" src="https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg" alt="md-links">
+</p>
+
+[Markdown](https://es.wikipedia.org/wiki/Markdown) is a very popular lightweight markup language among developers. It is used in many platforms that handle plain text (GitHub, forums, blogs, ...), and it is very common to find several files in that format in any type of repository (starting with the traditional `README.md`).
+
+These `Markdown` files usually contain _links_ that are often broken or no longer valid and that greatly damages the value of the information that you want to share.
+
+## 2. :arrow_down:Install
+
+```npm
+npm install -g emae--md-links
+```
+## 3. 🔍Usage
+
+```bash
+md-links
+```
+
 md-links API
 ```js
 Inicio
@@ -92,17 +112,8 @@ Fin módulo
 ```
 md-links is an executable that reads and analyzes files in Markdown format, to verify the links they contain and report some statistics.
 
-## Install
 
-```npm
-npm install -g emae--md-links
-```
 
-# Usage
-
-```bash
-md-links
-```
 
 # Contributing
 If someone wants to add or improve something, I invite you to collaborate directly in this repository: [md-links](https://github.com/emae1712/LIM013-fe-md-links)
@@ -110,24 +121,7 @@ If someone wants to add or improve something, I invite you to collaborate direct
 # License
 md-links is released under the [MIT License](https://opensource.org/licenses/MIT).
 
-## 1. Preámbulo
 
-[Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado
-ligero muy popular entre developers. Es usado en muchísimas plataformas que
-manejan texto plano (GitHub, foros, blogs, ...), y es muy común
-encontrar varios archivos en ese formato en cualquier tipo de repositorio
-(empezando por el tradicional `README.md`).
-
-Estos archivos `Markdown` normalmente contienen _links_ (vínculos/ligas) que
-muchas veces están rotos o ya no son válidos y eso perjudica mucho el valor de
-la información que se quiere compartir.
-
-Dentro de una comunidad de código abierto, nos han propuesto crear una
-herramienta usando [Node.js](https://nodejs.org/), que lea y analice archivos
-en formato `Markdown`, para verificar los links que contengan y reportar
-algunas estadísticas.
-
-![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
 
 ## 2. Resumen del proyecto
 
